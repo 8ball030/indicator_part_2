@@ -71,7 +71,7 @@ def setup_environment(data, feed):
 
     env = default.create(portfolio=portfolio,
                          action_scheme="simple",
-                         reward_scheme="simple",
+                         reward_scheme="sortino_ratio",
                          feed=feed,
                          renderer_feed=renderer_feed,
                          renderer=default.renderers.FileLogger(),
