@@ -94,19 +94,36 @@ This form of Machine Learning has already been applied to trading by a number of
 
 ## Experiments
 
-Continuing with our datasets gathered from the previous article, we will use the TensorTrader library to implement our trading agent. 
+Continuing with our datasets gathered from the previous article, we will use the TensorTrader library to implement our trading agent. This is a best in class library built on top of (as the name suggests) Google's Tensorflow.
 
-We will train our reinforcment learning algorithm on 2000 1 hour candles sticks from 2020-10-07 17:00:00 until 2020-12-30 00:00:00.
+We will train our reinforcment learning algorithm on 2000 1 hour candles sticks from 2020-10-07 17:00:00 until 2020-12-30 00:00:00. Our agent will use spot rates and a fully collateralised position, rather than trading leveraged products. 
+
+It should be noted that this is a period of time where BTC has undergone significant chance. Therefore there will of course be a bias in the data due to this.
+
 We will augment these candlesticks with the indicators which we selected in our previous set of experiments to create a vector consisting of not only these technical indicators, but also the actual internal state of the agent(cash balance, btc balance).
 
 We will then implement a Reinforcement Learning algorithm which as its reward measure receives the simple profit and loss of the agent through its current iteration. 
 
 This metric means that our algorithm will optimise the actions of the agent in order to maximise profit, with no regard for risk.
 
-Results
+## Results
+### Experiment 1
+No training of the model. This iteration of our experiment provides us with a baseline for the performance of our strategy. 
+
+We can plot the performance of our agent as so.
+
+Over the period, we can our agent performed with a total final result of XXXXX
+
+### Experiment 2
+We train the model for a total of 10,000 episodes. In traditional machine learning, this would lead to considerable overfitting of the agent to the timeseries, however in the case of reinforcement learning, even in a trained agent there is an element of random exploration possible at each step as the agent looks to improve its policy network.
+
+Whilst it should still be noted that the agent will be biased towards a bull market, when comparing the performance of the agent against the underlying, it can be seen that the agent significantly outperforms a standard buy and hold strategy.
 
 Conclusion
 
+
+
+### Next steps
 There are a number of different performance measures we would use in order to change the behaviour of our agent, depending upon our personal risk tolerance, these will be covered in the next article as we discuss the real world performance of our agent.
 
 
