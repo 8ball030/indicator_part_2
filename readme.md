@@ -1,8 +1,23 @@
 # FTX Indicator Series
 ## Running learning
 
-```
+
+```bash
 git clone https://github.com/8ball030/indicator_part_2.git
+cd indicator_part_2
+pip3 install -r requirements.txt
+```
+To run and plot control experiment
+```bash
+python3 main.py -e 1 -p T
+```
+To run the learning experiment
+```bash
+python3 main.py -e 2
+```
+To plot an individual agent from experiment 2
+```
+python3 main.py -e 2 -p T -a "agents"
 ```
 
  
@@ -10,7 +25,7 @@ git clone https://github.com/8ball030/indicator_part_2.git
 
 Technical Indicators  - Part 2
 
-Introduction
+## Introduction
 Our previous article on the selection of technical indicators saw an investigation into the information conveyed in a large number of traditional financial technical indicators. We performed an analysis of the markets involved in FTX’s trading DeFi trading competition to determine the indicators which convey the most information at each timestep.
 
 By employing a machine learning algorithm to predict the next time step in the series, we were able to use the technical indicators as factors in this prediction problem. We were then able to isolate the impact of each of the individual indicators in order to rank their impact on the models ability to correctly predict the next time step.
