@@ -19,14 +19,32 @@ We were able to show that for the vast majority of the technical indicators, the
 
 ![image](./imgs/TopTenIndicators.png)
 
+The next issue becomes, how do we capitalise on this knowledge?
+
+A more traditional approach to the problem would be to create a rule-based system. Using a rule-based approach, the architect would specify individual combinations of ***if*** is True ***then*** actions.
+
+This will feel intuitive to most readers. This is exactly how the very first thinknig machines where programmed. These rule-based systems would then be backtested against historic market data in order to optimise the performance of the system by modifying the conditions of the rules within the rule set.
+
+However, this approach has a number of drawbacks.
+ - Requires an approach to assigning buy and sell signals to the different combinations of possible factors.
+ - Can require a large number of rules to cover every outcome
+
+Consider a simple buy the dip strategy consisting of a number of rules:
+#### Entry
+ - ***if*** market drops **a** percent
+-- **then** buying with ***b*** percent of your cash
+
+#### Exit - Profit
+ - ***if*** market rises **c** percent
+-- **then** selling ***d*** percent of your btc
+
+#### Exit - Stoploss
+ - ***if*** market drops **e** percent
+-- **then** selling ***f*** percent of your btc
+
+If we are to use a conservative estimate of only 10 possible possible parameters for 
 
 
-The next issue becomes, how do we capitalise on this knowledge? A more traditional approach to the problem would be to create a rule-based system. Using a rule based system, the architect would specify individual combinations of if condition then actions that will feel intuitive. These rule-based systems would then be backtested against historic market data in order to optimise the performance of the system.
-
-However, this approach has a number of drawbacks. 
-Requires an approach to assigning buy and sell signals to the different combinations of possible factors.
-Can require a large number of rules to cover every outcome
-The solution space is huge.
 
 It is clear that more traditional forms of computing will not necessarily help us achieve our desired outcome of outperforming the market, the solution space is too large, and the difficulty in implementing enough rules to cover every possible case is impractical.
 
