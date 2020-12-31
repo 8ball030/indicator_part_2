@@ -1,15 +1,11 @@
 # FTX Indicator Series
+## Running learning
 
-## Part II
+```
+git clone https://github.com/8ball030/indicator_part_2.git
+```
 
-### Introduction
-
-
-### Study on biased coin flip and Decision making
-
-
-### Study on 
-
+ 
 ## Paper
 
 Technical Indicators  - Part 2
@@ -20,6 +16,9 @@ Our previous article on the selection of technical indicators saw an investigati
 By employing a machine learning algorithm to predict the next time step in the series, we were able to use the technical indicators as factors in this prediction problem. We were then able to isolate the impact of each of the individual indicators in order to rank their impact on the models ability to correctly predict the next time step.
 
 We were able to show that for the vast majority of the technical indicators, their inclusion into our model did not increase our predictive capability. It also allowed us to identify the most relevant indicators as so;
+
+![image](./imgs/TopTenIndicators.png)
+
 
 
 The next issue becomes, how do we capitalise on this knowledge? A more traditional approach to the problem would be to create a rule-based system. Using a rule based system, the architect would specify individual combinations of if condition then actions that will feel intuitive. These rule-based systems would then be backtested against historic market data in order to optimise the performance of the system.
@@ -44,10 +43,6 @@ However, it is clear that even if we were to provide a signal to our trading dec
 To fully capitalise on the information gained from the indicators we have selected, it would still be necessary to create a number of rules to manage exposure, position size, and existing orders. All of these interacting rules opens up the possibility of unintended consequences, or would require considerable testing to cover every conceivable situation.
 
 Therefore, we are looking for a different approach to exploring the solution space. Due to the fact that our actions within the environment have a direct impact upon our performance within the environment, the problem does not fit into the traditional domains for which machine learning is best known for. 
-
-
-
-
 
 Reinforcement Learning
 Reinforcement Learning is a more modern approach to decision making in incomplete non-deterministic environments. The technique sprung to fame emerged into the forefront of decision making computer science with the performance of the AI  Go playing algorithm developed by Deep Mind. This algorithm comprehensively annihilated the world's best human Go player in XXXX. 
@@ -76,5 +71,30 @@ The internal state of the Agent. Cash balance / Asset Balance.
 Results
 
 Conclusion
+
+
+# References
+
+[Github Repo] (https://github.com/8ball030/ftx_competition_entry)
+
+[CCXT](https://github.com/ccxt/ccxt) 
+
+[PyAlgoTrade](https://gbeced.github.io/pyalgotrade/)
+
+
+
+
+## Referals & Tips
+Shameless plug of FTX exchange, the only exchange I trade on.
+
+[FTX Exchange](https://ftx.com/#a=2746848)
+
+BTC:
+37fRtmuJTLR8QZtKWwyHh7d5AWiv4Xoz8G
+
+BCH:
+0xec34CD3ABDEBC781647083AF3d2fafADacb35D63
+
+[Brave Support](https://brave.com/bal844)
 
 
