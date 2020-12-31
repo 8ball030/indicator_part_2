@@ -50,7 +50,35 @@ def transform_data(data, last_n):
 
 
 
-def setup_environment(data, feed):
+def setup_environment_1(data, feed):
+    """Create environment."""
+    logger.info(f"Creating environment.")
+    coinbase = Exchange("coinbase", service=execute_order)(Stream.source(
+        list(data["close"]), dtype="float").rename("USD-BTC"))
+
+    portfolio = Portfolio(
+        USD, [Wallet(coinbase, 10000 * USD),
+              Wallet(coinbase, 0 * BTC)])
+
+    renderer_feed = DataFeed([
+        Stream.source(list(data["date"])).rename("date"),
+        Stream.source(list(data["open"]), dtype="float").rename("open"),
+        Stream.source(list(data["high"]), dtype="float").rename("high"),
+        Stream.source(list(data["low"]), dtype="float").rename("low"),
+        Stream.source(list(data["close"]), dtype="float").rename("close"),
+        Stream.source(list(data["volume"]), dtype="float").rename("volume")
+    ])
+
+    env = default.create(portfolio=portfolio,
+                         action_scheme="simple",
+                         reward_scheme="simple",
+                         feed=feed,
+                         renderer_feed=renderer_feed,
+                         renderer=default.renderers.FileLogger(),
+                         window_size=20)
+    return env
+
+def setup_environment_2(data, feed):
     """Create environment."""
     logger.info(f"Creating environment.")
     coinbase = Exchange("coinbase", service=execute_order)(Stream.source(
@@ -103,12 +131,46 @@ def create_feed(data: pd.DataFrame):
     return feed
 
 
-def main():
-    data = load_data()
+def setup_data(gather=True):
+    if gather:
+        data = load_data()
+    else:
+        data = pd.read_data("./data/current_data.csv")
     feed = create_feed(data)
+    return feed, data
+    
+
+def experiment_1():
+    """We simply load and gather our data. Simple training and simple pnl reward scheme."""
+    feed, data = setup_data(gather=False)
+    env = setup_environment_1(data, feed)
+    train_agent(env)
+    
+def experiment_2():
+    """We simply load and gather our data. Simple training and simple pnl reward scheme."""
+    feed, data = setup_data(gather=False)
     env = setup_environment(data, feed)
     train_agent(env)
+    
 
+
+
+def main():
+    if input("Gather new set of data? (y/n)").lower() == "y":
+        load_data()
+    
+    experiments = {1: ["Simple pnl reward/ simple orders", experiment_1], 
+                   0: ["Skip Experiments", print]}
+
+    [print(f"{k}. {v[0]}") for k, v in experiments.items()]
+
+
+    choice = input("Please select the appropriate experiment")
+
+
+    func = experiments[choice]
+    
+    func()
 
 if __name__ == "__main__":
     main()
